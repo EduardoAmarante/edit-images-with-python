@@ -3,20 +3,14 @@ from time import sleep
 from PIL import Image
 import os,sys
 
+b = Image.open("./fundo_blue.png")
+r = Image.open("./fundo_red.png")
+g = Image.open("./fundo_green.png")
+pink = Image.open("./fundo_pink.png")
 
-def getPath():
-    return Path(os.path.abspath(os.path.dirname(sys.argv[0])))
-
-pdef = "C:/Users/Eduardo/Desktop/config/"
-b = Image.open(pdef + "fundo_blue.png")
-r = Image.open(pdef + "fundo_red.png")
-g = Image.open(pdef + "fundo_green.png")
-pink = Image.open(pdef + "fundo_pink.png")
-
-path = getPath()
+path = Path(os.path.abspath(os.path.dirname(sys.argv[0])))
 
 color = input("Digite blue/red/green/pink: ")
-print(path)
 
 for filename  in path.glob('*'):
     try:
