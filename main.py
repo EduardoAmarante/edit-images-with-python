@@ -18,10 +18,10 @@ def square_photo_new_video(color):
     Performs batch processing of multiple images to square photo format
     """
     try:
-        blue_background = Image.open("backgrounds/fundo_blue.png")
-        red_background = Image.open("backgrounds/fundo_red.png")
-        green_background = Image.open("backgrounds/fundo_green.png")
-        pink_background = Image.open("backgrounds/fundo_pink.png")
+        blue_background = Image.open("backgrounds/bg_blue.png")
+        red_background = Image.open("backgrounds/bg_red.png")
+        green_background = Image.open("backgrounds/bg_green.png")
+        pink_background = Image.open("backgrounds/bg_pink.png")
     except FileNotFoundError as err:
         print("File not found in folder")
         print(err)
@@ -68,6 +68,8 @@ def square_photo_new_video(color):
               show_default=True)
 def thumb_maker(photo_filename, episode_number, accent_color):
     """
+    Makes a Thumbnail image with counter (#EPISODE)
+
     PHOTO_FILENAME: The name of thumbnail file (.jpg only)\n
     EPISODE_NUMBER: The number to show ni thumbnail
     """
