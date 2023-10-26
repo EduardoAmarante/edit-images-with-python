@@ -2,7 +2,7 @@ from PIL import Image, ImageChops, ImageFilter
 from matplotlib import image, pyplot as plt
 
 
-b = Image.open("./fundo_blue.png")
+b = Image.open("backgrounds/fundo_blue.png")
 #r = Image.open("./fundo_red.png")
 t = Image.open("./thumb.jpg")
 
