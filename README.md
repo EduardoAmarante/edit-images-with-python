@@ -1,5 +1,7 @@
 # Editing images with python
 
+![CLI image editing tool](./images/help-sample.png)
+
 ## [pt-br]
 ### Descrição
 
