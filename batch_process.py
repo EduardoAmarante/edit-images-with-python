@@ -43,32 +43,28 @@ def photo_square_newvideo():
             sleep(10)
 
 
-def thumb_maker(photo_filename, number):
+def thumb_maker(photo_filename, episode_number, accent_color='#47A4BF'):
     try:
+        accent_color = accent_color.lstrip('#')
         thumb = Image.open(photo_filename)
         # [Shadow, main color]
-        cor = [(0, 0, 0), (71, 164, 191)]
+        color = [(0, 0, 0), tuple(int(accent_color[i:i+2], 16) for i in (0, 2, 4))]
+        title_message = "#{:02d}".format(episode_number)
 
-        for i in range(2):
-            title_font = ImageFont.truetype('font/LuckiestGuy-Regular.ttf', 390)
-            if number > 9:
-                title_text = "#{}".format(number)
-            else:
-                title_text = "#0{}".format(number)
+        title_font = ImageFont.truetype('font/LuckiestGuy-Regular.ttf', 390)
+        image_editable = ImageDraw.Draw(thumb)
+        image_editable.text((1120, 600), title_message, color[0], font=title_font)
+        image_editable.text((1150, 605), title_message, color[1], font=title_font)
 
-            image_editable = ImageDraw.Draw(thumb)
-
-            if i > 0:
-                image_editable.text((1120, 600), title_text, cor[i], font=title_font)
-                thumb.save("capa {}.jpg".format(number))
-            else:
-                image_editable.text((1150, 605), title_text, cor[i], font=title_font)
-                thumb.save("capa {}.jpg".format(number))
+        filename_without_ext = os.path.splitext(photo_filename)[0]
+        output_file = "cover_{}_{}.jpg".format(filename_without_ext, episode_number)
+        try:
+            thumb.save(output_file)
+        except Exception as err:
+            print("Error on saving {}".format(output_file))
+            print(err)
     except FileNotFoundError:
         print("File {} not found in folder".format(photo_filename))
-    except Exception as e:
+    except Exception as err:
         print("A exception happens when try to open {} image.".format(photo_filename))
-        print(e)
-
-for i in range(1, 15):
-    thumb_maker('capa2.jpg', i)
+        print(err)
